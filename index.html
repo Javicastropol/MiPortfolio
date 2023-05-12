@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!--MENU ENCABEZADO  -->
+    <div class="contenedor-header">
+      <header>
+        <div class="logo">
+          <a href="#">Javi</a>
+        </div>
+        <nav id="nav" class="responsive">
+          <ul>
+            <li><a href="#inicio" onclick="seleccionar()">INICIO</a></li>
+            <li><a href="#sobremi" onclick="seleccionar()">SOBRE MI</a></li>
+            <li><a href="#skills" onclick="seleccionar()">SKILLS</a></li>
+            <li><a href="#contacto" onclick="seleccionar()">CONTACTO</a></li>
+          </ul>
+        </nav>
+        <div class="nav-responsive" onclick="mostrarOcultarMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </header>
+    </div>
+    <!-- SECCION INICIO -->
+    <section id="inicio" class="inicio">
+      <div class="contenido-banner">
+        <div class="contenedor-img">
+          <img src="foto de perfil.jpg" alt="" />
+        </div>
+        <h1>JAVI PEREZ</h1>
+        <h2>Programador Web Junior</h2>
+      </div>
+    </section>
+
+    <!-- SECCION SOBRE MI -->
+    <section id="sobremi" class="sobremi">
+      <div class="contenido-seccion">
+        <h2>Sobre Mi</h2>
+        <p>
+          <span>Hola, soy Javi Perez.</span>Soy un apasionado de la programación
+          web y enamorado de la informática en general. Desde ya muy joven
+          formateaba ordenadores de familia y amigos y siempre he estado muy
+          atento a las nuevas tecnologías.
+        </p>
+        <div class="fila">
+          <div class="col">
+            <h3>Datos Personales</h3>
+            <ul>
+              <li>
+                <strong>Fecha de Nacimiento</strong>
+                29-10-1999
+              </li>
+              <li>
+                <strong>Telefono</strong>
+                +34 608 354 157
+              </li>
+              <li>
+                <strong>Email</strong>
+                rasganorth@gmail.com
+              </li>
+              <li>
+                <strong>Direccion</strong>
+                A/ Carlos Conde Nº17 Castropol, Asturias
+              </li>
+            </ul>
+          </div>
+        </div>
+        <a href="Currículum.pdf" dowload>
+          <button>
+            Descargar CV <i class="fa-solid fa-download"></i>
+            <span class="overlay"></span>
+          </button>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECCION SKILLS -->
+    <section class="skills" id="skills">
+      <div class="contenido-seccion">
+        <h2>Skills</h2>
+        <div class="fila">
+          <!-- Technical skill -->
+          <div class="col">
+            <h3>Technical Skills</h3>
+            <div class="skill">
+              <span>Javascript</span>
+              <div class="barra-skill">
+                <div class="progreso" data-progress_percent="50">
+                  <span>50</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill">
+              <span>HTML & CSS</span>
+              <div class="barra-skill">
+                <div class="progreso" data-progress_percent="75">
+                  <span>75</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill">
+              <span>Java</span>
+              <div class="barra-skill">
+                <div class="progreso" data-progress_percent="25">
+                  <span>25</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Professional Skills -->
+          <div class="col">
+            <h3>Professional Skills</h3>
+            <div class="skill">
+              <span>Comunicacion</span>
+              <div class="barra-skill">
+                <div class="progreso" data-progress_percent="75">
+                  <span>75</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill">
+              <span>Trabajo en equipo</span>
+              <div class="barra-skill">
+                <div class="progreso" data-progress_percent="85">
+                  <span>85</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill">
+              <span>Creatividad</span>
+              <div class="barra-skill">
+                <div class="progreso" data-progress_percent="95">
+                  <span>95</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill">
+              <span>Dedicacion</span>
+              <div class="barra-skill">
+                <div class="progreso" data-progress_percent="65">
+                  <span>65</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCION CONTACTO -->
+    <section id="contacto" class="contacto">
+      <div class="contenido-seccion">
+        <h2>CONTACTO</h2>
+        <div class="fila">
+          <!-- Formulario -->
+          <div class="col">
+            <input type="text" placeholder="Tu nombre" />
+            <input type="text" placeholder="Numero de Telefono" />
+            <input type="text" placeholder="Direccion de correo" />
+            <input type="text" placeholder="Tema" />
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+              placeholder="Mensaje"
+            ></textarea>
+
+            <button>
+              Enviar Mensaje <i class="fa-solid fa-paper-plane"></i>
+              <span class="overlay"></span>
+            </button>
+          </div>
+          <!-- Mapa -->
+          <div class="col">
+            <img src="Castropol.png" alt="" />
+            <div class="info">
+              <ul>
+                <li>
+                  <i class="fa-solid fa-location-dot"></i>
+                  A/ Carlos Conde Nº17 Castropol, Asturias
+                </li>
+                <li>
+                  <i class="fa-solid fa-mobile-screen-button"></i>
+                  Llama: 608 354 157
+                </li>
+                <li>
+                  <i class="fa-solid fa-envelope"></i>
+                  Email:rasganorth@gmail.com
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>
