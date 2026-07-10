@@ -12,6 +12,8 @@
   --white: #f4f2dc;
   --muted: #c3c7b1;
   --danger: #ff6b4a;
+  --cursor-x: -100px;
+  --cursor-y: -100px;
 }
 
 * {
@@ -77,6 +79,128 @@ a {
   pointer-events: none;
   position: fixed;
   z-index: 2;
+}
+
+.wasteland-cursor {
+  display: none;
+}
+
+@media (pointer: fine) {
+  body.cursor-ready,
+  body.cursor-ready a,
+  body.cursor-ready button,
+  body.cursor-ready input,
+  body.cursor-ready textarea {
+    cursor: none;
+  }
+
+  .wasteland-cursor {
+    display: block;
+    filter: drop-shadow(0 0 9px rgba(141, 255, 119, 0.8));
+    height: 50px;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    scale: 1;
+    top: 0;
+    transform: translate3d(
+      var(--cursor-x),
+      var(--cursor-y),
+      0
+    );
+    transition:
+      opacity 0.16s ease,
+      scale 0.16s ease;
+    width: 50px;
+    z-index: 10000;
+  }
+
+  body.cursor-ready .wasteland-cursor {
+    opacity: 1;
+  }
+
+  .cursor-arrow {
+    background: linear-gradient(135deg, #e9ffdf 0%, var(--pip) 40%, #3de85c 100%);
+    clip-path: polygon(0 0, 0 35px, 9px 26px, 15px 43px, 23px 40px, 17px 24px, 32px 24px);
+    display: block;
+    height: 43px;
+    left: 2px;
+    position: absolute;
+    top: 0;
+    width: 32px;
+  }
+
+  .cursor-arrow::after {
+    background: rgba(7, 16, 13, 0.78);
+    clip-path: polygon(4px 7px, 4px 26px, 10px 20px, 16px 35px, 18px 34px, 12px 18px, 23px 18px);
+    content: "";
+    inset: 0;
+    position: absolute;
+  }
+
+  .cursor-core {
+    background: conic-gradient(
+      from 20deg,
+      transparent 0 24deg,
+      var(--pip) 24deg 58deg,
+      transparent 58deg 142deg,
+      var(--pip) 142deg 178deg,
+      transparent 178deg 262deg,
+      var(--pip) 262deg 300deg,
+      transparent 300deg 360deg
+    );
+    border: 2px solid rgba(141, 255, 119, 0.92);
+    border-radius: 50%;
+    box-shadow:
+      inset 0 0 8px rgba(141, 255, 119, 0.35),
+      0 0 18px rgba(141, 255, 119, 0.55);
+    height: 20px;
+    left: 22px;
+    position: absolute;
+    top: 20px;
+    width: 20px;
+  }
+
+  .cursor-core::before {
+    background: var(--pip);
+    border-radius: 50%;
+    content: "";
+    height: 5px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 5px;
+  }
+
+  .cursor-ring {
+    animation: cursor-spin 2.6s linear infinite;
+    border: 1px dashed rgba(141, 255, 119, 0.74);
+    border-radius: 50%;
+    height: 36px;
+    left: 14px;
+    position: absolute;
+    scale: 1;
+    top: 12px;
+    transition: scale 0.16s ease;
+    width: 36px;
+  }
+
+  .wasteland-cursor.is-hovering {
+    filter:
+      drop-shadow(0 0 12px rgba(255, 191, 94, 0.85))
+      drop-shadow(0 0 16px rgba(141, 255, 119, 0.75));
+  }
+
+  .wasteland-cursor.is-hovering .cursor-ring {
+    border-color: rgba(255, 191, 94, 0.92);
+    scale: 1.22;
+  }
+
+  .wasteland-cursor.is-clicking {
+    scale: 0.82;
+  }
 }
 
 .contenedor-header {
@@ -148,8 +272,8 @@ a {
 .inicio {
   align-items: center;
   background:
-    linear-gradient(90deg, rgba(7, 12, 10, 0.92), rgba(7, 12, 10, 0.5) 52%, rgba(7, 12, 10, 0.82)),
-    url("imagenes/wallpaperfallout.jpg") center / cover fixed;
+    linear-gradient(90deg, rgba(7, 12, 10, 0.94), rgba(7, 12, 10, 0.56) 52%, rgba(7, 12, 10, 0.84)),
+    url("imagenes/cyber-wasteland.jpg") center / cover fixed;
   display: grid;
   gap: 48px;
   grid-template-columns: minmax(0, 680px) minmax(280px, 360px);
@@ -428,8 +552,8 @@ a {
 
 .contacto {
   background:
-    linear-gradient(rgba(7, 16, 13, 0.88), rgba(7, 16, 13, 0.95)),
-    url("Castropol.png") center / cover;
+    linear-gradient(rgba(7, 16, 13, 0.9), rgba(7, 16, 13, 0.96)),
+    url("imagenes/cyber-wasteland.jpg") center / cover fixed;
 }
 
 .contenido-seccion {
@@ -661,6 +785,12 @@ a {
 @keyframes blink {
   50% {
     opacity: 0;
+  }
+}
+
+@keyframes cursor-spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 

@@ -1,215 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <title>Javi Pérez | Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="cursor-light" aria-hidden="true"></div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fco. Javier Pérez Pablos — Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="cursor-light" aria-hidden="true"></div>
+  <div class="wasteland-cursor" aria-hidden="true">
+    <span class="cursor-arrow" aria-hidden="true"></span>
+    <span class="cursor-core" aria-hidden="true"></span>
+    <span class="cursor-ring" aria-hidden="true"></span>
+  </div>
 
-    <div class="contenedor-header">
-      <header>
-        <div class="logo">
-          <a href="#inicio">Javi</a>
-        </div>
-        <nav id="nav">
-          <ul>
-            <li><a href="#inicio" onclick="seleccionar()">Inicio</a></li>
-            <li><a href="#sobremi" onclick="seleccionar()">Sobre mí</a></li>
-            <li><a href="#skills" onclick="seleccionar()">Skills</a></li>
-            <li><a href="#contacto" onclick="seleccionar()">Contacto</a></li>
-          </ul>
-        </nav>
-        <button
-          class="nav-responsive"
-          type="button"
-          aria-label="Abrir menú"
-          onclick="mostrarOcultarMenu()"
-        >
-          <i class="fa-solid fa-bars"></i>
-        </button>
-      </header>
-    </div>
+  <div class="contenedor-header">
+    <header>
+      <div class="logo"><a href="#inicio">Javier</a></div>
+      <nav id="nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="#inicio" class="active">Inicio</a></li>
+          <li><a href="#sobremi">Sobre mí</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <button class="nav-responsive" aria-expanded="false" onclick="mostrarOcultarMenu()">☰</button>
+    </header>
+  </div>
 
-    <section id="inicio" class="inicio">
+  <main>
+    <section id="inicio" class="inicio" aria-label="Sección inicio">
       <div class="hero-hud">
-        <p class="eyebrow">
-          <span></span>
-          Terminal activo // Asturias Wasteland
-        </p>
-        <h1>Javi Pérez</h1>
-        <h2>
-          <span id="typewriter">Programador Web Junior</span>
-          <span class="terminal-caret" aria-hidden="true"></span>
-        </h2>
-        <p class="hero-copy">
-          Desarrollo interfaces web con mentalidad de supervivencia: claras,
-          resistentes y listas para funcionar cuando el mapa se pone difícil.
-        </p>
-
+        <div class="eyebrow"><span></span> Portafolio</div>
+        <h1>Fco. Javier Pérez</h1>
+        <h2 id="typewriter" data-phrases='["Programador Web Junior","Frontend en modo supervivencia","HTML, CSS y JavaScript","Interfaces con señal propia"]'></h2>
+        <p class="hero-copy">Apasionado de la programación web y enamorado de la informática en general. Actualmente estoy tratando de ampliar mis conocimientos informáticos de diversas maneras.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#contacto">
-            Contactar
-            <i class="fa-solid fa-paper-plane"></i>
-          </a>
-          <a class="btn btn-ghost" href="Currículum.pdf" download>
-            Descargar CV
-            <i class="fa-solid fa-download"></i>
-          </a>
+          <a class="btn btn-primary" href="#contacto">Contactar</a>
+          <a class="btn btn-ghost download-link" href="cv.pdf" download>Descargar CV</a>
         </div>
-
-        <div class="status-grid" aria-label="Estado del sistema">
-          <div>
-            <span>RAD</span>
-            <strong id="rad-counter">014</strong>
-          </div>
-          <div>
-            <span>FOCO</span>
-            <strong>98%</strong>
-          </div>
-          <div>
-            <span>SEÑAL</span>
-            <strong>ONLINE</strong>
-          </div>
+        <div class="status-grid">
+          <div><span>Edad</span><strong>—</strong></div>
+          <div><span>Localización</span><strong>Castropol</strong></div>
+          <div><span>Teléfono</span><strong>+34 642 572 418</strong></div>
         </div>
       </div>
 
-      <div class="contenido-banner survivor-card" data-tilt>
-        <div class="vault-tag">VAULT 29</div>
+      <aside class="survivor-card">
         <div class="contenedor-img">
-          <img src="profile-wasteland.jpeg" alt="Foto de perfil de Javi Pérez" />
+          <img src="imagenes/perfilpostapocaliptico.png" alt="Imagen postapocalíptica" />
         </div>
-        <h2>Frontend scavenger</h2>
-        <p>HTML // CSS // JavaScript</p>
-      </div>
+        <h2>Programador Web Junior</h2>
+        <p>HTML · CSS · JavaScript · React · Java</p>
+      </aside>
     </section>
 
     <section id="sobremi" class="sobremi">
       <div class="contenido-seccion">
         <h2>Sobre mí</h2>
-        <p class="intro">
-          <span>Hola, soy Javi Pérez.</span> Soy un apasionado de la
-          programación web y de la informática en general. Desde joven
-          formateaba ordenadores de familia y amigos, y sigo con la misma
-          curiosidad por entender, reparar y construir cosas digitales.
-        </p>
-
+        <p class="intro">Apasionado de la programación web y enamorado de la informática en general. Desde joven formateaba ordenadores de familia y amigos.</p>
         <div class="fila about-grid">
           <div class="col terminal-panel">
-            <h3>Datos personales</h3>
+            <h3>Formación</h3>
             <ul>
-              <li>
-                <strong>Nacimiento</strong>
-                29-10-1999
-              </li>
-              <li>
-                <strong>Teléfono</strong>
-                +34 608 354 157
-              </li>
-              <li>
-                <strong>Email</strong>
-                rasganorth@gmail.com
-              </li>
-              <li>
-                <strong>Dirección</strong>
-                A/ Carlos Conde Nº17, Castropol, Asturias
-              </li>
+              <li><strong>Bootcamp Fullstack</strong><span>Factoría F5 — Nov 2022 - May 2023</span></li>
+              <li><strong>CFGM Sistemas</strong><s  pan>Ilerna — 2023</span></li>
             </ul>
           </div>
-
           <div class="col terminal-panel">
-            <h3>Bitácora</h3>
-            <p>
-              Me gusta aprender a base de práctica, cuidar los detalles visuales
-              y convertir ideas sencillas en experiencias con personalidad.
-            </p>
-            <div class="chips" aria-label="Intereses">
-              <span>Interfaces</span>
-              <span>Responsive</span>
-              <span>Automatización</span>
-              <span>Diseño web</span>
-            </div>
+            <h3>Experiencia</h3>
+            <ul>
+              <li><strong>Diseño Web</strong><span>2016</span></li>
+              <li><strong>Peón temporal</strong><span>Agro de Bazán</span></li>
+            </ul>
           </div>
         </div>
-
-        <a class="btn download-link" href="Currículum.pdf" download>
-          Descargar CV
-          <i class="fa-solid fa-download"></i>
-        </a>
       </div>
     </section>
 
-    <section class="skills" id="skills">
+    <section id="skills" class="skills">
       <div class="contenido-seccion">
         <h2>Skills</h2>
         <div class="fila">
-          <div class="col terminal-panel">
-            <h3>Technical Skills</h3>
+          <div class="col">
+            <div class="skill">
+              <span>HTML / CSS</span>
+              <div class="barra-skill">
+                <div class="progreso" data-progress_percent="92"><span>0%</span></div>
+              </div>
+            </div>
             <div class="skill">
               <span>JavaScript</span>
               <div class="barra-skill">
-                <div class="progreso" data-progress_percent="50">
-                  <span>0%</span>
-                </div>
-              </div>
-            </div>
-            <div class="skill">
-              <span>HTML & CSS</span>
-              <div class="barra-skill">
-                <div class="progreso" data-progress_percent="75">
-                  <span>0%</span>
-                </div>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Java</span>
-              <div class="barra-skill">
-                <div class="progreso" data-progress_percent="25">
-                  <span>0%</span>
-                </div>
+                <div class="progreso" data-progress_percent="78"><span>0%</span></div>
               </div>
             </div>
           </div>
-
-          <div class="col terminal-panel">
-            <h3>Professional Skills</h3>
+          <div class="col">
             <div class="skill">
-              <span>Comunicación</span>
+              <span>React</span>
               <div class="barra-skill">
-                <div class="progreso" data-progress_percent="75">
-                  <span>0%</span>
-                </div>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Trabajo en equipo</span>
-              <div class="barra-skill">
-                <div class="progreso" data-progress_percent="85">
-                  <span>0%</span>
-                </div>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Creatividad</span>
-              <div class="barra-skill">
-                <div class="progreso" data-progress_percent="95">
-                  <span>0%</span>
-                </div>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Dedicación</span>
-              <div class="barra-skill">
-                <div class="progreso" data-progress_percent="65">
-                  <span>0%</span>
-                </div>
+                <div class="progreso" data-progress_percent="60"><span>0%</span></div>
               </div>
             </div>
           </div>
@@ -220,57 +112,26 @@
     <section id="contacto" class="contacto">
       <div class="contenido-seccion">
         <h2>Contacto</h2>
-        <div class="fila">
-          <form id="form" class="terminal-panel">
-            <div class="field">
-              <label for="emailjs_name">Nombre</label>
-              <input
-                type="text"
-                name="emailjs_name"
-                id="emailjs_name"
-                autocomplete="name"
-                required
-              />
-            </div>
-            <div class="field">
-              <label for="emailjs_email">Email</label>
-              <input
-                type="email"
-                name="emailjs_email"
-                id="emailjs_email"
-                autocomplete="email"
-                required
-              />
-            </div>
-            <div class="field">
-              <label for="emailjs_message">Mensaje</label>
-              <textarea
-                name="emailjs_message"
-                id="emailjs_message"
-                rows="5"
-                required
-              ></textarea>
-            </div>
-
-            <button type="submit" id="button" class="submit-button">
-              Enviar señal
-              <i class="fa-solid fa-satellite-dish"></i>
-            </button>
-            <p id="form-status" class="form-status" aria-live="polite"></p>
-          </form>
-        </div>
+        <form id="form" novalidate>
+          <div class="field">
+            <label for="name">Nombre</label>
+            <input id="name" name="name" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+          <div class="field">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+          <button id="button" class="submit-button btn-primary" type="submit">Enviar señal</button>
+          <div id="form-status" class="form-status" aria-live="polite"></div>
+        </form>
       </div>
     </section>
+  </main>
 
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-    ></script>
-    <script type="text/javascript">
-      if (window.emailjs) {
-        emailjs.init("-cOsGWVSDaBvq2DrC");
-      }
-    </script>
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js" defer></script>
+</body>
 </html>

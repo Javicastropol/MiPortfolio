@@ -56,6 +56,11 @@ $typewriterPhrases = [
   </head>
   <body>
     <div class="cursor-light" aria-hidden="true"></div>
+    <div class="wasteland-cursor" aria-hidden="true">
+      <span class="cursor-arrow"></span>
+      <span class="cursor-core"></span>
+      <span class="cursor-ring"></span>
+    </div>
 
     <div class="contenedor-header">
       <header>
