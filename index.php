@@ -1,3 +1,46 @@
+<?php
+
+declare(strict_types=1);
+
+function e(string $value): string
+{
+    return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+}
+
+$profile = [
+    'name' => 'Javi Pérez',
+    'role' => 'Programador Web Junior',
+    'tagline' => 'Desarrollo interfaces web con mentalidad de supervivencia: claras, resistentes y listas para funcionar cuando el mapa se pone difícil.',
+    'location' => 'Asturias Wasteland',
+    'birthdate' => '29-10-1999',
+    'phone' => '+34 608 354 157',
+    'email' => 'rasganorth@gmail.com',
+    'address' => 'A/ Carlos Conde Nº17, Castropol, Asturias',
+    'profileImage' => 'profile-wasteland.jpeg',
+    'cv' => 'Currículum.pdf',
+];
+
+$technicalSkills = [
+    'JavaScript' => 50,
+    'HTML & CSS' => 75,
+    'Java' => 25,
+];
+
+$professionalSkills = [
+    'Comunicación' => 75,
+    'Trabajo en equipo' => 85,
+    'Creatividad' => 95,
+    'Dedicación' => 65,
+];
+
+$interests = ['Interfaces', 'Responsive', 'Automatización', 'Diseño web'];
+$typewriterPhrases = [
+    'Programador Web Junior',
+    'Frontend en modo supervivencia',
+    'HTML, CSS y JavaScript',
+    'Interfaces con señal propia',
+];
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -8,7 +51,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <title>Javi Pérez | Portfolio</title>
+    <title><?= e($profile['name']); ?> | Portfolio</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -42,24 +85,24 @@
       <div class="hero-hud">
         <p class="eyebrow">
           <span></span>
-          Terminal activo // Asturias Wasteland
+          Terminal activo // <?= e($profile['location']); ?>
         </p>
-        <h1>Javi Pérez</h1>
+        <h1><?= e($profile['name']); ?></h1>
         <h2>
-          <span id="typewriter">Programador Web Junior</span>
+          <span
+            id="typewriter"
+            data-phrases='<?= e(json_encode($typewriterPhrases, JSON_UNESCAPED_UNICODE)); ?>'
+          ><?= e($profile['role']); ?></span>
           <span class="terminal-caret" aria-hidden="true"></span>
         </h2>
-        <p class="hero-copy">
-          Desarrollo interfaces web con mentalidad de supervivencia: claras,
-          resistentes y listas para funcionar cuando el mapa se pone difícil.
-        </p>
+        <p class="hero-copy"><?= e($profile['tagline']); ?></p>
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contacto">
             Contactar
             <i class="fa-solid fa-paper-plane"></i>
           </a>
-          <a class="btn btn-ghost" href="Currículum.pdf" download>
+          <a class="btn btn-ghost" href="<?= e($profile['cv']); ?>" download>
             Descargar CV
             <i class="fa-solid fa-download"></i>
           </a>
@@ -84,10 +127,10 @@
       <div class="contenido-banner survivor-card" data-tilt>
         <div class="vault-tag">VAULT 29</div>
         <div class="contenedor-img">
-          <img src="profile-wasteland.jpeg" alt="Foto de perfil de Javi Pérez" />
+          <img src="<?= e($profile['profileImage']); ?>" alt="Foto de perfil de <?= e($profile['name']); ?>" />
         </div>
         <h2>Frontend scavenger</h2>
-        <p>HTML // CSS // JavaScript</p>
+        <p>HTML // CSS // JavaScript // PHP 8</p>
       </div>
     </section>
 
@@ -95,8 +138,8 @@
       <div class="contenido-seccion">
         <h2>Sobre mí</h2>
         <p class="intro">
-          <span>Hola, soy Javi Pérez.</span> Soy un apasionado de la
-          programación web y de la informática en general. Desde joven
+          <span>Hola, soy <?= e($profile['name']); ?>.</span> Soy un apasionado
+          de la programación web y de la informática en general. Desde joven
           formateaba ordenadores de familia y amigos, y sigo con la misma
           curiosidad por entender, reparar y construir cosas digitales.
         </p>
@@ -107,19 +150,19 @@
             <ul>
               <li>
                 <strong>Nacimiento</strong>
-                29-10-1999
+                <?= e($profile['birthdate']); ?>
               </li>
               <li>
                 <strong>Teléfono</strong>
-                +34 608 354 157
+                <?= e($profile['phone']); ?>
               </li>
               <li>
                 <strong>Email</strong>
-                rasganorth@gmail.com
+                <?= e($profile['email']); ?>
               </li>
               <li>
                 <strong>Dirección</strong>
-                A/ Carlos Conde Nº17, Castropol, Asturias
+                <?= e($profile['address']); ?>
               </li>
             </ul>
           </div>
@@ -131,15 +174,14 @@
               y convertir ideas sencillas en experiencias con personalidad.
             </p>
             <div class="chips" aria-label="Intereses">
-              <span>Interfaces</span>
-              <span>Responsive</span>
-              <span>Automatización</span>
-              <span>Diseño web</span>
+              <?php foreach ($interests as $interest): ?>
+                <span><?= e($interest); ?></span>
+              <?php endforeach; ?>
             </div>
           </div>
         </div>
 
-        <a class="btn download-link" href="Currículum.pdf" download>
+        <a class="btn download-link" href="<?= e($profile['cv']); ?>" download>
           Descargar CV
           <i class="fa-solid fa-download"></i>
         </a>
@@ -152,66 +194,30 @@
         <div class="fila">
           <div class="col terminal-panel">
             <h3>Technical Skills</h3>
-            <div class="skill">
-              <span>JavaScript</span>
-              <div class="barra-skill">
-                <div class="progreso" data-progress_percent="50">
-                  <span>0%</span>
+            <?php foreach ($technicalSkills as $skill => $percent): ?>
+              <div class="skill">
+                <span><?= e($skill); ?></span>
+                <div class="barra-skill">
+                  <div class="progreso" data-progress_percent="<?= e((string) $percent); ?>">
+                    <span>0%</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="skill">
-              <span>HTML & CSS</span>
-              <div class="barra-skill">
-                <div class="progreso" data-progress_percent="75">
-                  <span>0%</span>
-                </div>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Java</span>
-              <div class="barra-skill">
-                <div class="progreso" data-progress_percent="25">
-                  <span>0%</span>
-                </div>
-              </div>
-            </div>
+            <?php endforeach; ?>
           </div>
 
           <div class="col terminal-panel">
             <h3>Professional Skills</h3>
-            <div class="skill">
-              <span>Comunicación</span>
-              <div class="barra-skill">
-                <div class="progreso" data-progress_percent="75">
-                  <span>0%</span>
+            <?php foreach ($professionalSkills as $skill => $percent): ?>
+              <div class="skill">
+                <span><?= e($skill); ?></span>
+                <div class="barra-skill">
+                  <div class="progreso" data-progress_percent="<?= e((string) $percent); ?>">
+                    <span>0%</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="skill">
-              <span>Trabajo en equipo</span>
-              <div class="barra-skill">
-                <div class="progreso" data-progress_percent="85">
-                  <span>0%</span>
-                </div>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Creatividad</span>
-              <div class="barra-skill">
-                <div class="progreso" data-progress_percent="95">
-                  <span>0%</span>
-                </div>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Dedicación</span>
-              <div class="barra-skill">
-                <div class="progreso" data-progress_percent="65">
-                  <span>0%</span>
-                </div>
-              </div>
-            </div>
+            <?php endforeach; ?>
           </div>
         </div>
       </div>
@@ -224,32 +230,15 @@
           <form id="form" class="terminal-panel">
             <div class="field">
               <label for="emailjs_name">Nombre</label>
-              <input
-                type="text"
-                name="emailjs_name"
-                id="emailjs_name"
-                autocomplete="name"
-                required
-              />
+              <input type="text" name="emailjs_name" id="emailjs_name" autocomplete="name" required />
             </div>
             <div class="field">
               <label for="emailjs_email">Email</label>
-              <input
-                type="email"
-                name="emailjs_email"
-                id="emailjs_email"
-                autocomplete="email"
-                required
-              />
+              <input type="email" name="emailjs_email" id="emailjs_email" autocomplete="email" required />
             </div>
             <div class="field">
               <label for="emailjs_message">Mensaje</label>
-              <textarea
-                name="emailjs_message"
-                id="emailjs_message"
-                rows="5"
-                required
-              ></textarea>
+              <textarea name="emailjs_message" id="emailjs_message" rows="5" required></textarea>
             </div>
 
             <button type="submit" id="button" class="submit-button">
